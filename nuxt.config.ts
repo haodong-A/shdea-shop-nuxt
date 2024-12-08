@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@element-plus/nuxt',
   ],
+  // plugins: [
+  //   { src: '~/plugins/lenis.ts', ssr: false },
+  // ],
 
   devtools: {
     enabled: true,

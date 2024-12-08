@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { appName } from '~/constants'
+import 'lenis/dist/lenis.css'
 
 useHead({
   title: appName,
@@ -14,10 +15,7 @@ useHead({
 </template>
 
 <style>
-html,
-body,
 #__nuxt {
-  height: 100vh;
   margin: 0;
   padding: 0;
 }

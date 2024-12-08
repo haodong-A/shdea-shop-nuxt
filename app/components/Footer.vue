@@ -31,7 +31,7 @@
               Quick Links
             </p>
             <div class="mt-5">
-              <NuxtLink to="/" class="block transition-colors transition-duration-300 hover:color-#438EB8FF">
+              <NuxtLink to="/sds" class="block transition-colors transition-duration-300 hover:color-#438EB8FF">
                 Home
               </NuxtLink>
               <NuxtLink to="/" class="mt-2 block transition-colors transition-duration-300 hover:color-#438EB8FF">
