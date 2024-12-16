@@ -2,6 +2,7 @@ import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
+  extends: ['./base'],
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -11,14 +12,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@element-plus/nuxt',
   ],
-  // plugins: [
-  //   { src: '~/plugins/lenis.ts', ssr: false },
-  // ],
-
   devtools: {
     enabled: true,
   },
-
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
@@ -36,7 +32,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-
   css: [
     '@unocss/reset/tailwind.css',
   ],

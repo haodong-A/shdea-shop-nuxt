@@ -31,6 +31,15 @@ export default defineConfig({
       processors: createLocalFontProcessor(),
     }),
   ],
+  theme: {
+    breakpoints: {
+      xs: '0', // 自定义最小断点
+      sm: '768px', // 小屏幕
+      md: '991px', // 中屏幕
+      lg: '1200px', // 大屏幕
+      xl: '1920px', // 超大屏幕
+    },
+  },
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),

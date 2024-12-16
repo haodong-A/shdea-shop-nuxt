@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Lenis from 'lenis'
 
-
 onMounted(() => {
   nextTick(() => {
     // eslint-disable-next-line no-new
@@ -14,9 +13,11 @@ onMounted(() => {
 
 <template>
   <div>
-    <main>
+    <Header />
+    <main mx-auto w-full>
       <slot />
       <br>
+      s
       <br>
       <br>
       <br>
@@ -32,53 +33,9 @@ onMounted(() => {
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-    </main>
 
-    <Footer />
-    <div class="mx-auto mt-5 text-center text-sm opacity-25">
-      [Default Layout]
-    </div>
+      s
+    </main>
+    <Footer w-full />
   </div>
 </template>
