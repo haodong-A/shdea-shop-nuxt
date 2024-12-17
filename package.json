@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "lenis": "^1.1.18",
+    "nuxt-swiper": "^2.0.0",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }

@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@element-plus/nuxt',
+    'nuxt-swiper',
   ],
   devtools: {
     enabled: true,
@@ -65,6 +66,9 @@ export default defineNuxtConfig({
       routes: ['/'],
       ignore: ['/hi'],
     },
+  },
+  elementPlus: {
+    themes: ['dark'],
   },
 
   eslint: {

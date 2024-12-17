@@ -1,28 +1,67 @@
 <script setup lang="ts">
-const online = useOnline()
+import { Autoplay, Pagination } from 'swiper/modules'
+import 'swiper/css'
+
+// 导入 Pagination 模块样式
+import 'swiper/css/pagination'
+
+const swiperRef = ref(null)
+const swiper = useSwiper(swiperRef, {
+  effect: 'creative',
+  loop: true,
+  autoplay: {
+    delay: 5000,
+  },
+  creativeEffect: {
+    prev: {
+      shadow: true,
+      translate: [0, 0, -400],
+    },
+    next: {
+      shadow: true,
+      translate: [0, 0, -400],
+    },
+  },
+})
 </script>
 
 <template>
-  <div>
-    <Logos mb-6 />
-    <ClientOnly>
-      <Suspense>
-        <PageView v-if="online" />
-        <div v-else text-gray:80>
-          You're offline
-        </div>
-        <template #fallback>
-          <div italic op50>
-            <span animate-pulse>Loading...</span>
-          </div>
-        </template>
-      </Suspense>
-      <template #fallback>
-        <div op50>
-          <span animate-pulse>...</span>
-        </div>
-      </template>
-    </ClientOnly>
-    <InputEntry />
-  </div>
+  <client-only>
+    <div h-full>
+      <div h-full>
+        <swiper-container
+          ref="swiperRef"
+          direction="horizontal"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :pagination="{
+            clickable: true,
+            dynamicBullets: true,
+          }"
+          :modules="[Pagination, Autoplay]"
+        >
+          <swiper-slide>
+            <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
+          </swiper-slide>
+          <swiper-slide>
+            <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
+          </swiper-slide>
+        </swiper-container>
+      </div>
+    </div>
+  </client-only>
 </template>
+
+<style>
+.el-carousel__container {
+  height: 100% !important;
+}
+
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+</style>

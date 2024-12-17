@@ -1,20 +1,11 @@
 <script setup lang="ts">
-import Lenis from 'lenis'
 
-onMounted(() => {
-  nextTick(() => {
-    // eslint-disable-next-line no-new
-    new Lenis({
-      autoRaf: true,
-    })
-  })
-})
 </script>
 
 <template>
-  <div>
+  <div relative>
     <Header />
-    <main mx-auto w-full>
+    <main mx-auto min-h-screen w-full>
       <slot />
       <br>
       s
@@ -33,7 +24,19 @@ onMounted(() => {
       <br>
       <br>
       <br>
-
+      <br>
+      <br>
+      <br>
+      <br>
+      <br><br>
+      <br>
+      <br>
+      <br>
+      <br><br>
+      <br>
+      <br>
+      <br>
+      <br>
       s
     </main>
     <Footer w-full />

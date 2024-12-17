@@ -13,7 +13,7 @@
           purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit.
         </p>
         <p mt-4>
-          whatsapp: +44 1222556565
+          whatsapp: +86 18948858733
         </p>
       </el-col>
       <el-col :span="24" :sm="12" mt-5 justify-around sm:mt-0 class="!flex">
