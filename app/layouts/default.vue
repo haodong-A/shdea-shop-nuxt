@@ -1,12 +1,12 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div relative>
-    <Header />
+  <div min-h-screen flex flex-col>
+    <AppHeader />
+    <dark-toggle />
     <main mx-auto min-h-screen w-full>
-      <slot />
+      <!--      <slot /> -->
       <br>
       s
       <br>

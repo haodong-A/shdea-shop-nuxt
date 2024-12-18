@@ -19,6 +19,9 @@ importers:
       nuxt-swiper:
         specifier: ^2.0.0
         version: 2.0.0(magicast@0.3.5)(rollup@4.27.4)
+      postcss:
+        specifier: ^8.4.49
+        version: 8.4.49
       smoothscroll-polyfill:
         specifier: ^0.4.4
         version: 0.4.4
@@ -61,7 +64,7 @@ importers:
         version: 0.65.1(eslint@9.16.0(jiti@2.4.0))(typescript@5.6.3)
       '@unocss/nuxt':
         specifier: ^0.65.0
-        version: 0.65.1(magicast@0.3.5)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
+        version: 0.65.1(magicast@0.3.5)(postcss@8.4.49)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
       '@vite-pwa/nuxt':
         specifier: ^0.10.6
         version: 0.10.6(magicast@0.3.5)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))
@@ -1823,6 +1826,8 @@ packages:
   '@unocss/postcss@0.65.1':
     resolution: {integrity: sha512-k7mKObxE4o1gApICri20TpI0lT/dtEQv+uYEOrFz267jgPVo3VD6umHsTOLA+OoQ5Bf7VEYQXSeV0oA96j0o1w==}
     engines: {node: '>=14'}
+    peerDependencies:
+      postcss: ^8.4.21
 
   '@unocss/preset-attributify@0.65.1':
     resolution: {integrity: sha512-bmu9JELcpwgrXA5RonvFeWb38RcUz82wpWfyDwKdQRJHD3MnYQ5lN03W4B7nMsAflc4ls7XQZLzhn9iYhbYYqg==}
@@ -7648,7 +7653,7 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@unocss/nuxt@0.65.1(magicast@0.3.5)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))':
+  '@unocss/nuxt@0.65.1(magicast@0.3.5)(postcss@8.4.49)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))':
     dependencies:
       '@nuxt/kit': 3.14.1592(magicast@0.3.5)(rollup@4.27.4)
       '@unocss/config': 0.65.1
@@ -7663,16 +7668,17 @@ snapshots:
       '@unocss/reset': 0.65.1
       '@unocss/vite': 0.65.1(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
       '@unocss/webpack': 0.65.1(rollup@4.27.4)
-      unocss: 0.65.1(@unocss/webpack@0.65.1(rollup@4.27.4))(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
+      unocss: 0.65.1(@unocss/webpack@0.65.1(rollup@4.27.4))(postcss@8.4.49)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
     transitivePeerDependencies:
       - magicast
+      - postcss
       - rollup
       - supports-color
       - vite
       - vue
       - webpack
 
-  '@unocss/postcss@0.65.1':
+  '@unocss/postcss@0.65.1(postcss@8.4.49)':
     dependencies:
       '@unocss/config': 0.65.1
       '@unocss/core': 0.65.1
@@ -11702,12 +11708,12 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@0.65.1(@unocss/webpack@0.65.1(rollup@4.27.4))(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3)):
+  unocss@0.65.1(@unocss/webpack@0.65.1(rollup@4.27.4))(postcss@8.4.49)(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3)):
     dependencies:
       '@unocss/astro': 0.65.1(rollup@4.27.4)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.6.3))
       '@unocss/cli': 0.65.1(rollup@4.27.4)
       '@unocss/core': 0.65.1
-      '@unocss/postcss': 0.65.1
+      '@unocss/postcss': 0.65.1(postcss@8.4.49)
       '@unocss/preset-attributify': 0.65.1
       '@unocss/preset-icons': 0.65.1
       '@unocss/preset-mini': 0.65.1
@@ -11725,6 +11731,7 @@ snapshots:
       '@unocss/webpack': 0.65.1(rollup@4.27.4)
       vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(terser@5.36.0)(tsx@4.19.2)(yaml@2.6.1)
     transitivePeerDependencies:
+      - postcss
       - rollup
       - supports-color
       - vue

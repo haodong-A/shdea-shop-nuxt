@@ -1,6 +1,8 @@
+import { createResolver } from '@nuxt/kit'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
+const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   extends: ['./base'],
   modules: [
@@ -13,6 +15,7 @@ export default defineNuxtConfig({
     '@element-plus/nuxt',
     'nuxt-swiper',
   ],
+  components: [{ path: resolve('./app/components'), pathPrefix: false }],
   devtools: {
     enabled: true,
   },

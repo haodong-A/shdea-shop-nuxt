@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { appName } from '~/constants'
 import 'lenis/dist/lenis.css'
+import '~/style/index.css'
 
 useHead({
   title: appName,
