@@ -2,7 +2,7 @@
 const search = ref()
 
 function reset() {
-
+  search.value = ''
 }
 </script>
 
@@ -18,11 +18,11 @@ function reset() {
     >
     <span
       v-if="search"
-      class="bg-primary text-primary absolute right-2 z-10 flex cursor-pointer items-center gap-1 rounded bg-opacity-10 px-2 py-1 text-xs hover:bg-opacity-20"
+      class="absolute right-2 z-10 flex cursor-pointer items-center gap-1 rounded bg-blue bg-opacity-10 px-2 py-1 text-xs hover:bg-opacity-20"
       @click="reset"
     >
-      <span>clear</span>
-      <div i-hugeicons-delete-02 />
+      <span>Clear</span>
+      <div i-hugeicons-delete-02 @click="reset" />
     </span>
   </form>
 </template>

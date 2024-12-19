@@ -5,7 +5,7 @@
 <template>
   <NuxtLink to="/my-account" class="hidden aspect-square items-center sm:inline-flex">
     <Transition name="pop-in" mode="out-in">
-      <div i-hugeicons-user size="7" border border-transparent />
+      <div i-hugeicons-user size="6" border border-transparent />
     </Transition>
   </NuxtLink>
 </template>

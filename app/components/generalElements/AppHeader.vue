@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { isShowingSearch } = useSearching()
 </script>
 
 <template>
@@ -17,6 +18,11 @@
         </div>
       </div>
     </div>
+    <Transition name="scale-y" mode="out-in">
+      <div v-if="isShowingSearch" class="mb-3 container -mt-1 sm:hidden">
+        <ProductSearch class="w-full flex" />
+      </div>
+    </Transition>
   </header>
 </template>
 

@@ -32,12 +32,16 @@ export default defineConfig({
     }),
   ],
   theme: {
-    breakpoints: {
-      xs: '0', // 自定义最小断点
-      sm: '768px', // 小屏幕
-      md: '991px', // 中屏幕
-      lg: '1200px', // 大屏幕
-      xl: '1920px', // 超大屏幕
+    // breakpoints: {
+    //   xs: '0', // 自定义最小断点
+    //   sm: '768px', // 小屏幕
+    //   md: '991px', // 中屏幕
+    //   lg: '1200px', // 大屏幕
+    //   xl: '1920px', // 超大屏幕
+    // },
+    container: {
+      center: true,
+      padding: '1rem',
     },
   },
   transformers: [

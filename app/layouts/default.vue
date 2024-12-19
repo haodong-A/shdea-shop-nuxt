@@ -6,7 +6,7 @@
     <AppHeader />
     <dark-toggle />
     <main mx-auto min-h-screen w-full>
-      <!--      <slot /> -->
+            <slot />
       <br>
       s
       <br>
