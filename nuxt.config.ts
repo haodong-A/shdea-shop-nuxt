@@ -74,6 +74,10 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
+    routeRules: {
+      '/': { prerender: true },
+      '/products/**': { swr: 3600 },
+    },
     prerender: {
       crawlLinks: false,
       routes: ['/'],

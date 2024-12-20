@@ -39,7 +39,7 @@
       <br>
       s
     </main>
-    <Footer w-full />
+    <AppFooter />
   </div>
 </template>
 
