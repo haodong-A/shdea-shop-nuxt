@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { appName } from '~/constants'
-import 'lenis/dist/lenis.css'
-import '~/style/index.css'
+const { siteName } = useAppConfig()
 
 useHead({
-  title: appName,
+  titleTemplate: `%s - ${siteName}`,
 })
 </script>
 

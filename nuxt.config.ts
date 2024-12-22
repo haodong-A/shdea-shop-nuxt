@@ -4,7 +4,6 @@ import { appDescription } from './app/constants/index'
 
 const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
-  extends: ['./base'],
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -45,6 +44,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
+    pageTransition: { name: 'page', mode: 'default' },
   },
   css: [
     '@unocss/reset/tailwind.css',

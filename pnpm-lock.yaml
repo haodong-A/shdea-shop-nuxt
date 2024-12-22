@@ -13,6 +13,9 @@ importers:
 
   .:
     dependencies:
+      '@vueform/slider':
+        specifier: ^2.1.10
+        version: 2.1.10
       lenis:
         specifier: ^1.1.18
         version: 1.1.18(vue@3.5.13(typescript@5.6.3))
@@ -2015,6 +2018,9 @@ packages:
 
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
+
+  '@vueform/slider@2.1.10':
+    resolution: {integrity: sha512-L2G3Ju51Yq6yWF2wzYYsicUUaH56kL1QKGVtimUVHT1K1ADcRT94xVyIeJpS0klliVEeF6iMZFbdXtHq8AsDHw==}
 
   '@vueuse/core@12.0.0':
     resolution: {integrity: sha512-C12RukhXiJCbx4MGhjmd/gH52TjJsc3G0E0kQj/kb19H3Nt6n1CA4DRWuTdWWcaFRdlTe0npWDS942mvacvNBw==}
@@ -8002,6 +8008,8 @@ snapshots:
       vue: 3.5.13(typescript@5.6.3)
 
   '@vue/shared@3.5.13': {}
+
+  '@vueform/slider@2.1.10': {}
 
   '@vueuse/core@12.0.0(typescript@5.6.3)':
     dependencies:

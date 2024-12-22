@@ -23,6 +23,10 @@ const swiper = useSwiper(swiperRef, {
     },
   },
 })
+
+useSeoMeta({
+  title: 'Home',
+})
 </script>
 
 <template>
