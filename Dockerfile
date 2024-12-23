@@ -6,6 +6,8 @@ COPY --from=build-stage ./ ./.output
 
 CMD ["node", ".output/server/index.mjs"]
 
+EXPOSE 3000
+
 FROM nginx
 
 COPY  ./nginx.conf /etc/nginx/nginx.conf
