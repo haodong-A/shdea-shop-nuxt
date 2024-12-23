@@ -1,12 +1,16 @@
 <script setup lang="ts">
+const { isShowingMobileMenu, toggleMobileMenu, addBodyClass, removeBodyClass } = useHelpers();
 </script>
 
 <template>
   <div min-h-screen flex flex-col>
     <AppHeader />
 
-    <slot />
 
+    <Transition name="slide-from-left">
+      <MobileMenu v-if="isShowingMobileMenu" />
+    </Transition>
+    <slot />
     <AppFooter />
   </div>
 </template>

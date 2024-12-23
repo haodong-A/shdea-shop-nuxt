@@ -7,10 +7,24 @@ export function useAuth() {
   function logoutUser() {
     console.log('logoutUser.....')
   }
+
+  function register(info: { username: string, password: string, email: string, code: string }) {
+    console.log(info)
+  }
+
+  function login(info: { account: string, password: string }) {
+    console.log(info)
+  }
+
+  function resetPw(email: string){
+    console.log(email)
+  }
   return {
     viewer,
     avatar,
     isPending,
+    login,
     logoutUser,
+    register,
   }
 }

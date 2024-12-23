@@ -64,7 +64,7 @@
     <div class="mb-4 flex items-center justify-center border-t container">
       <div class="copywrite">
         <p class="py-4 text-center text-xs">
-          <a href="https://woonuxt.com" title="SHDEA">Shangdea - SHDEA from china</a>
+          <a href="https://www.shdea-cooker.com" title="SHDEA">Shangdea - SHDEA from china</a>
         </p>
       </div>
       <SocialIcons />

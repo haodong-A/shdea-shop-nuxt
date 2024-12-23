@@ -50,7 +50,13 @@ useSeoMeta({
             <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
           </swiper-slide>
           <swiper-slide>
-            <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
+            <img src="/picture2.jpg" alt="picture" h-full w-full class="object-cover">
+          </swiper-slide>
+          <swiper-slide>
+            <img src="/picture3.jpg" alt="picture" h-full w-full class="object-cover">
+          </swiper-slide>
+          <swiper-slide>
+            <img src="/picture4.jpg" alt="picture" h-full w-full class="object-cover">
           </swiper-slide>
         </swiper-container>
       </div>
