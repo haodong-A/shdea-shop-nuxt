@@ -48,6 +48,7 @@ export default defineNuxtConfig({
   },
   css: [
     '@unocss/reset/tailwind.css',
+    './public/assets/element.css',
   ],
 
   colorMode: {
@@ -84,6 +85,7 @@ export default defineNuxtConfig({
       ignore: ['/hi'],
     },
   },
+
   elementPlus: {
     themes: ['dark'],
   },

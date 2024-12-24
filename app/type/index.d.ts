@@ -27,4 +27,10 @@ namespace Product {
     otherImages: string
     haveSample: number
   }
+
+  interface category {
+    label: string
+    value: string
+    children?: category[]
+  }
 }
