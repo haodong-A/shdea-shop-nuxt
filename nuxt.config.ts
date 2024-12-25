@@ -85,6 +85,15 @@ export default defineNuxtConfig({
       ignore: ['/hi'],
     },
   },
+  hooks: {
+    'pages:extend': function (pages) {
+      const addPage = (name: string, path: string, file: string) => {
+        pages.push({ name, path, file: resolve(`./app/pages/${file}`) })
+      }
+
+      addPage('product-page-pager', '/products/page/:pageNumber', 'products.vue')
+    },
+  },
 
   elementPlus: {
     themes: ['dark'],
@@ -98,6 +107,5 @@ export default defineNuxtConfig({
       },
     },
   },
-
   pwa,
 })

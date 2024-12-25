@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const router = useRouter()
+useSeoMeta({
+  title: '404',
+})
 </script>
 
 <template>
