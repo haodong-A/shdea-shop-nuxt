@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@element-plus/nuxt',
     'nuxt-swiper',
+    '@nuxt/image',
   ],
   components: [{ path: resolve('./app/components'), pathPrefix: false }],
   imports: {

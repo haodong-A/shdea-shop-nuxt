@@ -14,6 +14,7 @@ useHead({
       <div class="mt-8 w-full flex items-center justify-between gap-4 md:gap-8">
         <ProductResultCount />
       </div>
+      <ProductGrid />
     </div>
   </div>
   <NoProductsFound v-else>

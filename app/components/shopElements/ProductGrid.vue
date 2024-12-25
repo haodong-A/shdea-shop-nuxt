@@ -1,11 +1,14 @@
 <script setup lang="ts">
 const { products } = useProducts()
+
 </script>
 
 <template>
   <Transition name="fade" mode="out-in">
     <section v-if="!!products.length" relative w-full>
-      <TransitionGroup name="shrink" tag="div" mode="in-out" class="product-grid" />
+      <TransitionGroup name="shrink" tag="div" mode="in-out" class="product-grid">
+        <ProductCard v-for="(product, i) in products" :key="product.goodsId || i" :node="product" :index="i" />
+      </TransitionGroup>
     </section>
   </Transition>
 </template>

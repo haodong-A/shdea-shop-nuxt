@@ -23,6 +23,7 @@
     "@iconify-json/twemoji": "^1.2.1",
     "@nuxt/devtools": "^1.6.1",
     "@nuxt/eslint": "^0.7.2",
+    "@nuxt/image": "^1.8.1",
     "@nuxtjs/color-mode": "^3.5.2",
     "@pinia/nuxt": "^0.8.0",
     "@unocss/eslint-config": "^0.65.0",
