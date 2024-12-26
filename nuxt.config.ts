@@ -56,6 +56,13 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  runtimeConfig: {
+    public: {
+      API_BASE_DEV: 'http://localhost:8001',
+      API_BASE_PROD: 'https://shdea-cook.com',
+    },
+  },
+
   future: {
     compatibilityVersion: 4,
   },
