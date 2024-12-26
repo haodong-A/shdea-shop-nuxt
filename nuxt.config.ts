@@ -55,14 +55,6 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
-
-  runtimeConfig: {
-    public: {
-      API_BASE_DEV: 'http://localhost:8001',
-      API_BASE_PROD: 'https://shdea-cook.com',
-    },
-  },
-
   future: {
     compatibilityVersion: 4,
   },
@@ -78,6 +70,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-14',
 
   nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:8001',
+        prependPath: true,
+        changeOrigin: true,
+      },
+    },
     esbuild: {
       options: {
         target: 'esnext',
@@ -88,9 +87,9 @@ export default defineNuxtConfig({
       '/products/**': { swr: 3600 },
     },
     prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/hi'],
+      concurrency: 10,
+      interval: 1000,
+      failOnError: false,
     },
   },
   hooks: {

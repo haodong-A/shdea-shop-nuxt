@@ -15,7 +15,7 @@ const imgHeight = Math.round(imgWidth * 1.125)
 </script>
 
 <template>
-  <div group relative rounded-lg bg-white>
+  <div group relative>
     <NuxtLink :to="`/product/${node.goodsId}`" :title="node.title">
       <NuxtImg
         v-if="node.cover"

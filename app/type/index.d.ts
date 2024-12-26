@@ -23,9 +23,22 @@ namespace Product {
     goodsId: string
     title: string
     description: string
+    cover: string
+    spec: Spec[]
+  }
+
+  interface Spec {
+    specName: string
+    specModel: string
+    specType: string
+    moqPrices: string
+    haveSample: number
+    samplePrice: number
+    detailPage: string
+    order: number
+    infoId: number
     mainImage: string
     otherImages: string
-    haveSample: number
   }
 
   interface category {

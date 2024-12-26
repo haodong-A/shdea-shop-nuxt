@@ -14,6 +14,7 @@ function handleRequest(options: RequestOptions) {
 
 function handleResponse(response: any) {
   if (response.error) {
+    ElMessage.error('ERROR! Please try again.')
     throw new Error(response.error.message || 'Response Error')
   }
 
@@ -24,26 +25,23 @@ function handleResponse(response: any) {
 
 function createFetchRequest(method: HttpMethod) {
   return async function (url: string, data?: any, options: RequestOptions = {}) {
-    const {
-      public: {
-        API_BASE_DEV,
-        API_BASE_PROD,
-      },
-    } = useRuntimeConfig()
-
-    // eslint-disable-next-line node/prefer-global/process
-    const baseURL = process.env.NODE_ENV === 'production' ? API_BASE_PROD : API_BASE_DEV
-
-    const requestUrl = new URL(url, options.customBaseURL || baseURL).toString()
+    const requestUrl = `/api${url}`
 
     return useFetch(requestUrl, { ...options, method, body: data, onRequest: handleRequest, onResponse: handleResponse })
   }
 }
 
-export const useFetchGet = createFetchRequest('GET')
+async function fetch(method: HttpMethod, url: string, data: any, options: RequestOptions = {}) {
+  const fetchFunc = createFetchRequest(method)
+  const result = await fetchFunc(url, data, options) as any
 
-export const useFetchPost = createFetchRequest('POST')
-
-export const useFetchPut = createFetchRequest('PUT')
-
-export const useFetchDelete = createFetchRequest('DELETE')
+  if (result.data.value && result.data.value.code !== 1000) {
+    ElMessage.error('ERROR! Please try again.')
+    return
+  }
+  return result.data.value?.data || {}
+}
+export const useFetchGet = (url: string, data?: any) => fetch('GET', url, data)
+export const useFetchPost = (url: string, data?: any) => fetch('POST', url, data)
+export const useFetchPut = (url: string, data?: any) => fetch('PUT', url, data)
+export const useFetchDelete = (url: string, data?: any) => fetch('DELETE', url, data)
