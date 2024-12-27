@@ -8,7 +8,7 @@ const props = defineProps({
     type: String,
   },
   otherImages: {
-    type: Array<string>,
+    type: String,
   },
 })
 
@@ -16,17 +16,31 @@ const primaryImage = computed(() => props.mainImage || props.cover)
 
 const imageToShow = ref(primaryImage.value)
 
+const galleryImages = ref<string[]>([])
+
 function changeImage(image: any) {
   if (image)
     imageToShow.value = image
 }
 
+watch(() => props.otherImages, () => {
+  if (props.otherImages) {
+    try {
+      galleryImages.value = JSON.parse(props.otherImages) || []
+    }
+    // eslint-disable-next-line unused-imports/no-unused-vars
+    catch (err) {
+      galleryImages.value = []
+    }
+  }
+}, { immediate: true })
 const imgWidth = 640
 </script>
 
 <template>
   <div>
     <NuxtImg
+      class="min-w-[350px] w-full rounded-xl object-contain"
       :width="imgWidth"
       :height="imgWidth"
       alt="images"
@@ -35,9 +49,9 @@ const imgWidth = 640
       placeholder
       placeholder-class="blur-xl"
     />
-    <div v-if="otherImages?.length" class="gallery-images my-4">
+    <div v-if="galleryImages?.length" class="gallery-images my-4">
       <NuxtImg
-        v-for="galleryImg in otherImages"
+        v-for="galleryImg in galleryImages"
         :key="galleryImg"
         class="cursor-pointer rounded-xl"
         :width="imgWidth"

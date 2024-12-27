@@ -7,6 +7,7 @@ const productSpec = ref<Product.Spec[]>([])
 
 const currentSpec = ref()
 
+
 const route = useRoute()
 
 const isLoading = ref(false)
@@ -25,16 +26,13 @@ onMounted(async () => {
   const slug = route.params.slug
   product.value = await useFetchPost('/app/goods/info/info', { goodsId: slug })
   productSpec.value = product.value.spec || []
-  currentSpec.value = {
-    ...productSpec.value[0],
-    otherImages: productSpec.value[0]?.otherImages ? JSON.parse(productSpec.value[0]?.otherImages) : [],
-  }
+  currentSpec.value = productSpec.value[0]
 })
 </script>
 
 <template>
   <main class="relative py-6 container xl:max-w-7xl">
-    <div>
+    <div v-if="!!product">
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
         <ProductImageGallery
           v-if="!isEmpty(product)"
@@ -44,6 +42,22 @@ onMounted(async () => {
           :cover="product.cover"
         />
         <NuxtImg v-else src="/image/placeholder.jpg" alt="Placeholder" class="skeleton relative flex-1" />
+        <div class="grid my-8 gap-2 text-sm empty:hidden">
+          <div class="mb-4 flex justify-start">
+            <div class="flex-1">
+              <h1 class="font-sesmibold mb-2 flex flex-wrap items-center gap-2 text-2xl">
+                {{ product.title }}
+              </h1>
+            </div>
+          </div>
+          <div class="grid my-8 gap-2 text-sm empty:hidden">
+            <div v-if="currentSpec.specModel" class="flex items-center gap-2">
+              <span class="text-gray-400">SKU: </span>
+              <span>{{ currentSpec.specModel || 'N/A' }}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
