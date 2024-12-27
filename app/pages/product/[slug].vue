@@ -7,7 +7,6 @@ const productSpec = ref<Product.Spec[]>([])
 
 const currentSpec = ref()
 
-
 const route = useRoute()
 
 const isLoading = ref(false)
@@ -42,7 +41,7 @@ onMounted(async () => {
           :cover="product.cover"
         />
         <NuxtImg v-else src="/image/placeholder.jpg" alt="Placeholder" class="skeleton relative flex-1" />
-        <div class="grid my-8 gap-2 text-sm empty:hidden">
+        <div class="my-8 gap-2 text-sm empty:hidden">
           <div class="mb-4 flex justify-start">
             <div class="flex-1">
               <h1 class="font-sesmibold mb-2 flex flex-wrap items-center gap-2 text-2xl">
@@ -51,13 +50,21 @@ onMounted(async () => {
             </div>
           </div>
           <div class="grid my-8 gap-2 text-sm empty:hidden">
-            <div v-if="currentSpec.specModel" class="flex items-center gap-2">
+            <div v-if="currentSpec?.specModel" class="flex items-center gap-2">
               <span class="text-gray-400">SKU: </span>
               <span>{{ currentSpec.specModel || 'N/A' }}</span>
             </div>
           </div>
-        </div>
+          <div class="mb-8 font-light line-height-loose prose" v-html="product?.description || '' " />
+          <hr>
+          <table>
 
+          </table>
+          <hr>
+          <div v-if="productSpec.length" class="mb-8 mt-4">
+            <ProductSpecCard :spec="productSpec" :active="currentSpec.specModel" />
+          </div>
+        </div>
       </div>
     </div>
   </main>
