@@ -25,6 +25,7 @@ namespace Product {
     description: string
     cover: string
     spec: Spec[]
+    param: string
   }
 
   interface Spec {
