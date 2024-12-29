@@ -30,38 +30,36 @@ useSeoMeta({
 </script>
 
 <template>
-  <client-only>
+  <div h-full>
     <div h-full>
-      <div h-full>
-        <swiper-container
-          ref="swiperRef"
-          direction="horizontal"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-          :pagination="{
-            clickable: true,
-            dynamicBullets: true,
-          }"
-          :modules="[Pagination, Autoplay]"
-        >
-          <swiper-slide>
-            <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
-          </swiper-slide>
-          <swiper-slide>
-            <img src="/picture2.jpg" alt="picture" h-full w-full class="object-cover">
-          </swiper-slide>
-          <swiper-slide>
-            <img src="/picture3.jpg" alt="picture" h-full w-full class="object-cover">
-          </swiper-slide>
-          <swiper-slide>
-            <img src="/picture4.jpg" alt="picture" h-full w-full class="object-cover">
-          </swiper-slide>
-        </swiper-container>
-      </div>
+      <swiper-container
+        ref="swiperRef"
+        direction="horizontal"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }"
+        :pagination="{
+          clickable: true,
+          dynamicBullets: true,
+        }"
+        :modules="[Pagination, Autoplay]"
+      >
+        <swiper-slide>
+          <img src="/picture1.jpg" alt="picture" h-full w-full class="object-cover">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="/picture2.jpg" alt="picture" h-full w-full class="object-cover">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="/picture3.jpg" alt="picture" h-full w-full class="object-cover">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="/picture4.jpg" alt="picture" h-full w-full class="object-cover">
+        </swiper-slide>
+      </swiper-container>
     </div>
-  </client-only>
+  </div>
 </template>
 
 <style>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="flex gap-4 text-xl ml-auto">
+  <div class="ml-auto flex gap-4 text-xl">
     <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="X">
       <div class="text-gray-700 hover:text-gray-900" size="5" i-logos-facebook />
     </a>

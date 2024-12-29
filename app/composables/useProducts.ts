@@ -1,7 +1,7 @@
 const allProducts: any[] = ['a', 'b', 'c']
 
 export function useProducts() {
-  const products = useState<Product.simpleInfo[]>('product', () => [])
+  const products = useState<Product.SimpleInfo[]>('product', () => [])
 
   const isPending = ref(false)
 

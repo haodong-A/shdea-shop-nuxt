@@ -28,7 +28,7 @@ function cleanObject(obj: any) {
   }
   return newObj
 }
-function buildObject(arr, param) {
+function buildObject(arr: any[], param: any) {
   return arr.reduce((acc, item) => {
     // 如果有 children 属性，则递归处理
     if (item.children) {
@@ -41,7 +41,7 @@ function buildObject(arr, param) {
   }, {})
 }
 
-watch(() => param, () => {
+watch(() => productSpec, () => {
   if (param) {
     try {
       const parseField = JSON.parse(param)
@@ -56,7 +56,7 @@ watch(() => param, () => {
       specParam.value = []
     }
   }
-}, { immediate: true })
+}, { immediate: true, deep: true })
 </script>
 
 <template>
@@ -71,7 +71,7 @@ watch(() => param, () => {
     </nav>
     <div class="tab-contents">
       <div v-if="show === 0 && productSpec.detailPage " class="mt-8 w-full flex justify-center font-light">
-        <div class="w-full md:max-w-3/4 editor-content-view" v-html="productSpec.detailPage" />
+        <div class="editor-content-view w-full md:max-w-3/4" v-html="productSpec.detailPage" />
       </div>
       <div v-if="show === 1">
         <template v-if="!!specParam">
@@ -90,7 +90,7 @@ watch(() => param, () => {
   </div>
 </template>
 
-<style src="~/style/editor.css" scoped />
+<style src="~/style/editor.css" />
 
 <style lang="postcss" scoped>
 .tabs button {

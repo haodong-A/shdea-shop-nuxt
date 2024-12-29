@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { isEmpty } from 'lodash-es'
+import RequestQuote from "~/components/productElements/RequestQuote.vue";
 
 const product = ref<Product.Info>({} as Product.Info)
 
@@ -9,26 +10,39 @@ const currentSpec = ref<any>()
 
 const route = useRoute()
 
-const isLoading = ref(false)
-
-const field = ref<any>(null)
+const loading = ref<boolean>(false)
 
 watch(() => route.query, () => {
-  if (route.query.model) {
-    const find = productSpec.value.find(item => item.specModel === route.query.model)
+  if (route.query.sku) {
+    const find = productSpec.value.find(item => item.specModel === route.query.sku)
     if (find) {
+      loading.value = true
       currentSpec.value = find
+      setTimeout(() => {
+        loading.value = false
+      }, 500)
     }
   }
 })
 
+function onChange(value: any) {
+  currentSpec.value = productSpec.value.find((item: any) => item.specModel === value)
+}
+
 onMounted(async () => {
-  await nextTick()
   const slug = route.params.slug
   product.value = await useFetchPost('/app/goods/info/info', { goodsId: slug })
-
   productSpec.value = product.value.spec || []
-  currentSpec.value = productSpec.value[0]
+
+  if (route.query.sku) {
+    const find = productSpec.value.find((item: any) => item.specModel === route.query.sku)
+    if (find) {
+      currentSpec.value = find
+    }
+  }
+  else {
+    currentSpec.value = productSpec.value[0]
+  }
 })
 
 function parse(value: string, def = []): object {
@@ -40,19 +54,25 @@ function parse(value: string, def = []): object {
     return def
   }
 }
+
+useSeoMeta({
+  title: product.value.title || 'Product',
+})
 </script>
 
 <template>
   <main class="relative py-6 container xl:max-w-7xl">
-    <div v-if="!isEmpty(product)">
+    <div v-if="!isEmpty(product) && !loading">
+      <SEOHead :info="product" />
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
-        <ProductImageGallery
-          v-if="!isEmpty(product)"
-          class="relative flex-1"
-          :main-image="currentSpec?.mainImage"
-          :other-images="currentSpec?.otherImages"
-          :cover="product.cover"
-        />
+        <div v-if="!isEmpty(product)" class="flex-1">
+          <ProductImageGallery
+            :main-image="currentSpec?.mainImage"
+            :other-images="currentSpec?.otherImages"
+            :cover="product.cover"
+          />
+        </div>
+
         <NuxtImg v-else src="/image/placeholder.jpg" alt="Placeholder" class="skeleton relative flex-1" />
         <div class="my-8 gap-2 text-sm empty:hidden">
           <div class="mb-4 flex justify-start">
@@ -94,7 +114,19 @@ function parse(value: string, def = []): object {
           </template>
           <hr>
           <div v-if="productSpec.length" class="mb-8 mt-4">
-            <ProductSpecCard :spec="productSpec" :active="currentSpec.specModel" />
+            <ProductSpecCard :spec="productSpec" :active="currentSpec.specModel" @change="onChange" />
+          </div>
+
+          <hr>
+
+          <div
+            class="fixed bottom-0 left-0 z-10 mt-12 w-full flex items-center gap-4 bg-white bg-opacity-90 p-4 md:static md:bg-transparent md:p-0"
+          >
+            <RequestQuote class="w-full flex-1" :disabled="false" />
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <WishlistButton :spec="currentSpec" :title="product.title" />
+            <ShareButton :product />
           </div>
         </div>
       </div>

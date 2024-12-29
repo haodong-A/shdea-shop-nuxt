@@ -1,3 +1,7 @@
+/**
+ * Tip: sku = specModel
+ *
+ */
 namespace User {
   interface Info {
     username: string
@@ -8,11 +12,16 @@ namespace User {
     lastname: string
     phone: string
   }
+  interface Wishlist {
+    title: string
+    mainImage: string
+    sku: string
+  }
 }
 
 namespace Product {
   // 商品缩略信息
-  interface simpleInfo {
+  interface SimpleInfo {
     goodsId: string
     title: string
     description: string
@@ -42,9 +51,10 @@ namespace Product {
     otherImages: string
   }
 
-  interface category {
+  interface Category {
     label: string
     value: string
-    children?: category[]
+    children?: Category[]
   }
+
 }

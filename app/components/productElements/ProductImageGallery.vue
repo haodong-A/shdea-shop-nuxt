@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+const { cover, mainImage, otherImages } = defineProps({
   cover: {
     type: String,
     required: true,
@@ -12,21 +12,32 @@ const props = defineProps({
   },
 })
 
-const primaryImage = computed(() => props.mainImage || props.cover)
+const imageToShow = ref(mainImage)
 
-const imageToShow = ref(primaryImage.value)
-
+const active = ref<number>(0)
 const galleryImages = ref<string[]>([])
 
-function changeImage(image: any) {
+function changeImage(image: any, index: number) {
+  active.value = index
   if (image)
     imageToShow.value = image
 }
 
-watch(() => props.otherImages, () => {
-  if (props.otherImages) {
+watch(() => otherImages, () => {
+  if (otherImages) {
     try {
-      galleryImages.value = JSON.parse(props.otherImages) || []
+      galleryImages.value = [mainImage || cover]
+      let parse = JSON.parse(otherImages)
+      if (parse && parse.length) {
+        parse = parse?.filter((item: string) => !!item)
+      }
+      galleryImages.value.push(...parse)
+      if (galleryImages.value.length >= active.value + 1) {
+        imageToShow.value = galleryImages.value[active.value]
+      }
+      else {
+        imageToShow.value = galleryImages.value[0]
+      }
     }
     // eslint-disable-next-line unused-imports/no-unused-vars
     catch (err) {
@@ -38,7 +49,7 @@ const imgWidth = 640
 </script>
 
 <template>
-  <div>
+  <div class="sticky top-[73px]">
     <NuxtImg
       class="min-w-[350px] w-full rounded-xl object-contain"
       :width="imgWidth"
@@ -50,19 +61,23 @@ const imgWidth = 640
       placeholder-class="blur-xl"
     />
     <div v-if="galleryImages?.length" class="gallery-images my-4">
-      <NuxtImg
-        v-for="galleryImg in galleryImages"
-        :key="galleryImg"
-        class="cursor-pointer rounded-xl"
-        :width="imgWidth"
-        :height="imgWidth"
-        :src="galleryImg"
-        alt="shdea"
-        placeholder
+      <div
+        v-for="(galleryImg, index) in galleryImages" :key="galleryImg"
+        :class="index === active ? 'active' : '' "
+        class="cursor-pointer overflow-hidden rounded-xl transition-all transition-duration-300"
         placeholder-class="blur-xl"
-        loading="lazy"
-        @click.native="changeImage(galleryImg)"
-      />
+        @mouseover="changeImage(galleryImg, index)"
+      >
+        <NuxtImg
+          class="rounded-xl"
+          :width="imgWidth"
+          :height="imgWidth"
+          :src="galleryImg"
+          alt="shdea"
+          placeholder
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -93,5 +108,13 @@ const imgWidth = 640
       width: 100%;
     }
   }
+}
+
+.active {
+  border-color: rgba(127, 84, 178, 0.5) !important;
+}
+
+.gallery-images div {
+  border: 3px solid transparent;
 }
 </style>

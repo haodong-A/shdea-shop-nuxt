@@ -27,7 +27,7 @@ function createFetchRequest(method: HttpMethod) {
   return async function (url: string, data?: any, options: RequestOptions = {}) {
     const requestUrl = `/api${url}`
 
-    return useFetch(requestUrl, { ...options, method, body: data, onRequest: handleRequest, onResponse: handleResponse })
+    return $fetch(requestUrl, { ...options, method, body: data, onRequest: handleRequest, onResponse: handleResponse })
   }
 }
 
@@ -35,11 +35,11 @@ async function fetch(method: HttpMethod, url: string, data: any, options: Reques
   const fetchFunc = createFetchRequest(method)
   const result = await fetchFunc(url, data, options) as any
 
-  if (result.data.value && result.data.value.code !== 1000) {
+  if (result.code !== 1000) {
     ElMessage.error('ERROR! Please try again.')
     return
   }
-  return result.data.value?.data || {}
+  return result.data || {}
 }
 export const useFetchGet = (url: string, data?: any) => fetch('GET', url, data)
 export const useFetchPost = (url: string, data?: any) => fetch('POST', url, data)

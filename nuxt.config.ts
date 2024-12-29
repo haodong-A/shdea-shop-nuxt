@@ -49,7 +49,6 @@ export default defineNuxtConfig({
   },
   css: [
     '@unocss/reset/tailwind.css',
-    './public/assets/element.css',
   ],
 
   colorMode: {
@@ -72,7 +71,7 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://localhost:8001',
+        target: 'http://127.0.0.1:8001', // 10.4.4.2
         prependPath: true,
         changeOrigin: true,
       },

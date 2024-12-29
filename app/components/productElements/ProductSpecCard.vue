@@ -13,6 +13,8 @@ const props = defineProps({
   },
 })
 
+const route = useRoute()
+
 const specMap = ref<any>({})
 
 watch(() => props.spec, () => {
@@ -23,12 +25,17 @@ watch(() => props.spec, () => {
 </script>
 
 <template>
-  <div class="mb-8 mt-4 flex">
-    <div v-for="item in Object.keys(specMap)" :key="item">
+  <div class="mb-8 mt-4 flex flex-col">
+    <div v-for="item in Object.keys(specMap)" :key="item" mt-7>
       <div class="mb-3">
         {{ item }}
       </div>
-      <div v-for="(it, index) in specMap[item]" :key="it.specModel || index" class="cursor-pointer rounded-2 bg-white p-2" :title="it.specModel" :class="active === it.specModel ? '!bg-primary color-white' : ''">
+      <NuxtLink
+        v-for="(it, index) in specMap[item]"
+        :key="it.specModel || index" :to="`/product/${route.params.slug}?sku=${it.specModel}`"
+        class="cursor-pointer rounded-2 bg-white p-2" :title="it.specModel"
+        :class="active === it.specModel ? '!bg-primary color-white' : ''"
+      >
         <NuxtImg
 
           :width="20"
@@ -40,7 +47,7 @@ watch(() => props.spec, () => {
           loading="lazy"
         />
         <span class="ml-2"> {{ it.specName }}</span>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>

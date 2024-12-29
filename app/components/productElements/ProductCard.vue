@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
   node: {
-    type: Object as () => Product.simpleInfo,
+    type: Object as () => Product.SimpleInfo,
     required: true,
   },
   index: {
@@ -40,7 +40,3 @@ const imgHeight = Math.round(imgWidth * 1.125)
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
